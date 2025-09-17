@@ -19,8 +19,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
+        'whatsapp',
+        'foto',
+        'alamat',
         'password',
+        'role',
     ];
 
     /**
@@ -44,5 +49,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function laporans()
+    {
+        return $this->hasMany(Laporan::class);
     }
 }

@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('judul');
+            $table->text('deskripsi');
+            $table->date('tanggal');
+            $table->string('gambar');
+            $table->enum('status', ['pending', 'diproses', 'selesai'])->default('pending');
+            $table->text('respon');
             $table->timestamps();
         });
     }
