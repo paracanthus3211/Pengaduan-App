@@ -46,7 +46,7 @@
                     <li class="sidebar-title">Menu</li>
                     
                     <li
-                        class="sidebar-item active ">
+                        class="sidebar-item {{ request()->routeIs('home') ? 'active' : '' }}">
                         <a href="{{ route('home') }}" class='sidebar-link' wire:navigate>
                             <i class="bi bi-grid-fill"></i>
                             <span>Dashboard</span>
@@ -54,7 +54,7 @@
                     </li>
                     
                     <li
-                        class="sidebar-item">
+                        class="sidebar-item {{ request()->routeIs('laporan') ? 'active' : '' }}">
                         <a href="{{ route('laporan') }}" class='sidebar-link' wire:navigate>
                             <i class="bi bi-stack"></i>
                             <span>Laporan</span>
