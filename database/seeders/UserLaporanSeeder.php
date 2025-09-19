@@ -16,6 +16,26 @@ class UserLaporanSeeder extends Seeder
     public function run(): void
     {
         // Buat user role "user"
+        User::create([
+            'name' => 'User Admin',
+            'username' => 'useradmin',
+            'email' => 'admin@example.com',
+            'whatsapp' => '082191170349',
+            'password' => Hash::make('123456'),
+            'role' => 'admin',
+        ]);
+
+        // Buat user role "user"
+        User::create([
+            'name' => 'User Lain',
+            'username' => 'userlain',
+            'email' => 'lain@example.com',
+            'whatsapp' => '089123324232',
+            'password' => Hash::make('123456'),
+            'role' => 'user',
+        ]);
+
+        // Buat user role "user"
         $user = User::create([
             'name' => 'User Demo',
             'username' => 'userdemo',
