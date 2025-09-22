@@ -20,7 +20,8 @@ class AdminMiddleware
             if(Auth::user()->role == 'admin'){
                 return $next($request);
             }else{
-                abort(403, 'Unauthorized action.');
+                return redirect()->route('user.dashboard');
+                // abort(403, 'Unauthorized action.');
             }
         }else{
             return redirect()->route('login');

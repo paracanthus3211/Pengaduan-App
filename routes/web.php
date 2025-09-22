@@ -4,6 +4,7 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Dashboard\Home;
 use App\Livewire\Dashboard\Laporan;
 use App\Livewire\User\DashboardUser;
+use App\Livewire\User\LaporanUser;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,7 +22,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
 
 Route::prefix('user')->middleware(['auth', 'user'])->name('user.')->group(function () {
     Route::get('/', DashboardUser::class)->name('dashboard');
-    Route::get('/laporan', Laporan::class)->name('laporan');
+    Route::get('/laporan', LaporanUser::class)->name('laporan');
 });
 
 Route::get('/auth/start-session', Login::class)->name('login');
