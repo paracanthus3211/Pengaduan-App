@@ -11,15 +11,15 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-center align-items-center flex-column">
                         <div class="avatar avatar-2xl">
-                            {{-- @if($foto)
+                            @if($foto)
                                 <img src="{{ asset('storage/users/'.$foto) }}" alt="Avatar" class="rounded-circle" style="width:120px;height:120px;object-fit:cover;">
                             @else
                                 <img src="{{ asset('images/no-image.png') }}" alt="Avatar" class="rounded-circle" style="width:120px;height:120px;object-fit:cover;">
-                            @endif --}}
+                            @endif
                         </div>
 
-                        {{-- <h3 class="mt-3">{{ $name }}</h3>
-                        <p class="text-small">{{ '@'.$username ?? 'Belum ada username' }}</p> --}}
+                        <h3 class="mt-3">{{ $name }}</h3>
+                        <p class="text-small">{{ '@'.$username ?? 'Belum ada username' }}</p> 
                     </div>
                 </div>
             </div>

@@ -84,10 +84,11 @@
                     <li class="sidebar-title">Akun</li>
 
                     <li
-                        class="sidebar-item">
+                        class="sidebar-item {{ $currentRoute === 'user.profile' || $currentRoute === 'livewire.update' ? 'active' : '' }}">
                         <a href="{{ route('user.profile') }}" wire:navigate class='sidebar-link'>
                             <i class="bi bi-person"></i>
-                            <span>{{ Auth::user()->name }}</span>
+                            <!-- <span>{{ $currentRoute }}</span> -->
+                            <span>{{ $user->name }}</span>
                         </a>
                     </li>
 

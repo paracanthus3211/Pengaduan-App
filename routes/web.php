@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Auth\Login;
+use App\Livewire\Auth\Register;
 use App\Livewire\Dashboard\Home;
 use App\Livewire\Dashboard\Laporan;
 use App\Livewire\Umum\Profile;
@@ -32,6 +33,7 @@ Route::prefix('user')->middleware(['auth', 'user'])->name('user.')->group(functi
 });
 
 Route::get('/auth/start-session', Login::class)->name('login')->middleware('guest');
+Route::get('/auth/register', Register::class)->name('register')->middleware('guest');
 
 
 // Route::get('/home', Home::class)->name('home');
