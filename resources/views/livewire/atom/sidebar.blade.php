@@ -73,7 +73,7 @@
                     </li>
 
                     <li
-                        class="sidebar-item {{ request()->routeIs('user.laporan') || request()->routeIs('user.laporan.create') ? 'active' : '' }}">
+                        class="sidebar-item {{ request()->routeIs('user.laporan') || request()->routeIs('user.laporan.create') || request()->routeIs('user.laporan.edit') ? 'active' : '' }}">
                         <a href="{{ route('user.laporan') }}" class='sidebar-link' wire:navigate>
                             <i class="bi bi-stack"></i>
                             <span>Laporan</span>
@@ -85,7 +85,7 @@
 
                     <li
                         class="sidebar-item">
-                        <a href="#" class='sidebar-link'>
+                        <a href="{{ route('user.profile') }}" wire:navigate class='sidebar-link'>
                             <i class="bi bi-person"></i>
                             <span>{{ Auth::user()->name }}</span>
                         </a>
