@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
     Route::get('/', Home::class)->name('dashboard');
     Route::get('/laporan', Laporan::class)->name('laporan');
+    Route::get('/my-profile', Profile::class)->name('profile');
 });
 
 Route::prefix('user')->middleware(['auth', 'user'])->name('user.')->group(function () {

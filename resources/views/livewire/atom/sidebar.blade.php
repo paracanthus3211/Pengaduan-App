@@ -61,6 +61,17 @@
                             <span>Laporan</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-title">Akun</li>
+
+                    <li
+                        class="sidebar-item {{ $currentRoute === 'admin.profile' || $currentRoute === 'livewire.update' ? 'active' : '' }}">
+                        <a href="{{ route('admin.profile') }}" wire:navigate class='sidebar-link'>
+                            <i class="bi bi-person"></i>
+                            <!-- <span>{{ $currentRoute }}</span> -->
+                            <span>{{ $user->name }}</span>
+                        </a>
+                    </li>
                     @endif
 
                     @if(Auth::check() && Auth::user()->role === 'user')
@@ -79,7 +90,7 @@
                             <span>Laporan</span>
                         </a>
                     </li>
-                    @endif
+                    
 
                     <li class="sidebar-title">Akun</li>
 
@@ -91,7 +102,7 @@
                             <span>{{ $user->name }}</span>
                         </a>
                     </li>
-
+                    @endif
                     <livewire:auth.logout />
 
                     <!-- <li

@@ -12,21 +12,21 @@
                 <h1 class="auth-title">Register</h1>
                 <p class="auth-subtitle mb-5">Masukkan username, email, atau WhatsApp serta password.</p>
 
-                <form wire:submit.prevent="login" novalidate>
+                <form wire:submit.prevent="register" novalidate>
                     {{-- ID User field --}}
                     <div class="form-group position-relative has-icon-left mb-4">
-                        <label for="idUser" class="form-label visually-hidden">Full Name</label>
+                        <label for="name" class="form-label visually-hidden">Full Name</label>
                         <input
-                            wire:model.defer="idUser"
+                            wire:model.defer="name"
                             type="text"
-                            id="idUser"
-                            class="form-control form-control-xl @error('idUser') is-invalid @enderror"
+                            id="name"
+                            class="form-control form-control-xl @error('name') is-invalid @enderror"
                             placeholder="Full Name"
                             autocomplete="username">
                         <div class="form-control-icon">
                             <i class="bi bi-person"></i>
                         </div>
-                        @error('idUser')
+                        @error('name')
                             <div class="invalid-feedback d-block">{{ $message }}</div>
                         @enderror
                     </div>
@@ -115,8 +115,8 @@
                         class="btn btn-primary btn-block btn-lg shadow-lg mt-3"
                         wire:loading.attr="disabled"
                         wire:target="login">
-                        <span wire:loading.remove wire:target="login">Register</span>
-                        <span wire:loading wire:target="login">Loading...</span>
+                        <span wire:loading.remove wire:target="register">Register</span>
+                        <span wire:loading wire:target="register">Loading...</span>
                     </button>
                 </form>
 
