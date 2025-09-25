@@ -55,10 +55,18 @@
                     </li>
 
                     <li
-                        class="sidebar-item {{ request()->routeIs('admin.laporan') ? 'active' : '' }}">
+                        class="sidebar-item {{ request()->routeIs('admin.laporan') || request()->routeIs('admin.laporan.edit') ? 'active' : '' }}">
                         <a href="{{ route('admin.laporan') }}" class='sidebar-link' wire:navigate>
                             <i class="bi bi-stack"></i>
                             <span>Laporan</span>
+                        </a>
+                    </li>
+
+                    <li
+                        class="sidebar-item {{ request()->routeIs('admin.list-user') ? 'active' : '' }}">
+                        <a href="{{ route('admin.list-user') }}" class='sidebar-link' wire:navigate>
+                            <i class="bi bi-person-lines-fill"></i>
+                            <span>Data Pengguna</span>
                         </a>
                     </li>
 
@@ -68,7 +76,6 @@
                         class="sidebar-item {{ $currentRoute === 'admin.profile' || $currentRoute === 'livewire.update' ? 'active' : '' }}">
                         <a href="{{ route('admin.profile') }}" wire:navigate class='sidebar-link'>
                             <i class="bi bi-person"></i>
-                            <!-- <span>{{ $currentRoute }}</span> -->
                             <span>{{ $user->name }}</span>
                         </a>
                     </li>
@@ -98,7 +105,6 @@
                         class="sidebar-item {{ $currentRoute === 'user.profile' || $currentRoute === 'livewire.update' ? 'active' : '' }}">
                         <a href="{{ route('user.profile') }}" wire:navigate class='sidebar-link'>
                             <i class="bi bi-person"></i>
-                            <!-- <span>{{ $currentRoute }}</span> -->
                             <span>{{ $user->name }}</span>
                         </a>
                     </li>
