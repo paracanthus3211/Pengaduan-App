@@ -6,6 +6,7 @@ use App\Livewire\Admin\LaporanAdmin;
 use App\Livewire\Admin\ListUser;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
+use App\Livewire\Front\Konten\Grafik;
 use App\Livewire\Umum\Profile;
 use App\Livewire\User\CreateLaporan;
 use App\Livewire\User\DashboardUser;
@@ -13,13 +14,17 @@ use App\Livewire\User\EditLaporan;
 use App\Livewire\User\LaporanUser;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('components.layouts.front');
+// });
 
 // Route::get('/home', function () {
 //     return view('components.layouts.app');
 // });
+
+Route::prefix('/')->name('front.')->group(function () {
+    Route::get('grafik', Grafik::class)->name('grafik');
+});
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
     Route::get('/', DashboardAdmin::class)->name('dashboard');
