@@ -1,3 +1,59 @@
+@section('title', 'Grafik')
+
+@push('css')
+<style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+@endpush
+
+@push('js')
+<script>
+    let laporanPerBulan = @json($laporanPerBulan);
+    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+
+    new ApexCharts(document.querySelector("#grafik-laporan-bar"), {
+        series: [{
+            name: 'Laporan',
+            data: months.map((m,i) => laporanPerBulan[String(i+1).padStart(2, '0')] ?? 0)
+        }],
+        chart: {
+            type: 'bar',
+            height: 350
+        },
+        xaxis: {
+            categories: months
+        }
+    }).render();
+
+    new ApexCharts(document.querySelector("#grafik-laporan-pie"), {
+        series: [<?= $laporanPending ?>, <?= $laporanProses ?>, <?= $laporanSelesai ?>],
+        labels: ['Pending', 'Diproses', 'Selesai'],
+        colors: ['#ff7976', '#57caeb', '#5ddab4'],
+        chart: {
+            type: 'pie',
+            height: 350
+        },
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: '70%'
+                }
+            }
+        },
+        legend: {
+            position: 'bottom'
+        }
+    }).render();
+</script>
+@endpush
 <div>
     <div class="page-heading">
         <h3>Laporan Jumlah Pengaduan</h3>
@@ -17,7 +73,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Total Laporan</h6>
-                                        <h6 class="font-extrabold mb-0">03</h6>
+                                        <h6 class="font-extrabold mb-0">{{$totalLaporan}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +90,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Pending</h6>
-                                        <h6 class="font-extrabold mb-0">12</h6>
+                                        <h6 class="font-extrabold mb-0">{{$laporanPending}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +107,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Diproses</h6>
-                                        <h6 class="font-extrabold mb-0">19</h6>
+                                        <h6 class="font-extrabold mb-0">{{$laporanProses}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +124,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Selesai</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="font-extrabold mb-0">{{$laporanSelesai}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -79,10 +135,10 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Profile Visit</h4>
+                                <h4>Laporan Pengaduan Per Bulan {{date('Y')}}</h4>
                             </div>
                             <div class="card-body">
-                                <div id="chart-profile-visit"></div>
+                                <div id="grafik-laporan-bar"></div>
                             </div>
                         </div>
                     </div>
@@ -91,10 +147,10 @@
             <div class="col-12 col-lg-3">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Visitors Profile</h4>
+                        <h4>Laporan Per Kategori</h4>
                     </div>
                     <div class="card-body">
-                        <div id="chart-visitors-profile"></div>
+                        <div id="grafik-laporan-pie"></div>
                     </div>
                 </div>
             </div>
