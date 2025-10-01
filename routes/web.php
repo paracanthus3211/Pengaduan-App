@@ -7,6 +7,8 @@ use App\Livewire\Admin\ListUser;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Front\Konten\Grafik;
+use App\Livewire\Front\Konten\LaporanForm;
+use App\Livewire\Front\Konten\LaporanFront;
 use App\Livewire\Umum\Profile;
 use App\Livewire\User\CreateLaporan;
 use App\Livewire\User\DashboardUser;
@@ -18,12 +20,14 @@ use Illuminate\Support\Facades\Route;
 //     return view('components.layouts.front');
 // });
 
-// Route::get('/home', function () {
-//     return view('components.layouts.app');
-// });
+Route::get('/', function () {
+    return redirect()->route('front.list.laporan');
+});
 
 Route::prefix('/')->name('front.')->group(function () {
     Route::get('grafik', Grafik::class)->name('grafik');
+    Route::get('form/laporan/baru', LaporanForm::class)->name('form.laporan.baru');
+    Route::get('list-laporan', LaporanFront::class)->name('list.laporan');
 });
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
