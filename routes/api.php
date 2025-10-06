@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\Laporan;
+use App\Http\Controllers\Api\V1\Api1AuthController;
+use App\Http\Controllers\Api\V1\Api1LaporanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -10,10 +11,6 @@ Route::get('/user', function (Request $request) {
 
 // http://localhost:8000/api/v1/laporan
 Route::prefix('v1')->group(function () {
-    Route::get('/laporan', function () {
-        return response()->json([
-            'message' => 'success',
-            'data' => Laporan::all()
-        ]);
-    });
+    Route::post('/login', [Api1AuthController::class, 'login']);
+    Route::get('/laporan', [Api1LaporanController::class, 'index'])->middleware('auth:sanctum');
 });
